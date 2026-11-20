@@ -51,10 +51,19 @@ const fullTitle = title === siteTitle ? title : `${title} · ${siteTitle}`;
         <p class="site-title">
           <a href={import.meta.env.BASE_URL}>{siteTitle}</a>
         </p>
-        <nav class="site-nav" aria-label="Primary">
-          <a href={import.meta.env.BASE_URL}>Writing</a>
-          <a href={`${import.meta.env.BASE_URL}about/`}>About</a>
-        </nav>
+        <div class="site-header-end">
+          <nav class="site-nav" aria-label="Primary">
+            <a href={import.meta.env.BASE_URL}>Writing</a>
+            <a href={`${import.meta.env.BASE_URL}about/`}>About</a>
+          </nav>
+          <p class="lang-filter" role="navigation" aria-label="Language filter">
+            <a href={`${import.meta.env.BASE_URL}?lang=all`} data-lang-filter="all">All</a>
+            <span class="lang-filter-sep" aria-hidden="true">·</span>
+            <a href={`${import.meta.env.BASE_URL}?lang=en`} data-lang-filter="en">EN</a>
+            <span class="lang-filter-sep" aria-hidden="true">·</span>
+            <a href={`${import.meta.env.BASE_URL}?lang=ru`} data-lang-filter="ru">RU</a>
+          </p>
+        </div>
       </header>
       <main>
         <slot />
@@ -63,5 +72,62 @@ const fullTitle = title === siteTitle ? title : `${title} · ${siteTitle}`;
         <p>&copy; {new Date().getFullYear()} {siteTitle}</p>
       </footer>
     </div>
+    <script is:inline>
+      (function () {
+        var allowed = { all: 1, en: 1, ru: 1 };
+        var links = document.querySelectorAll('[data-lang-filter]');
+        var items = document.querySelectorAll('#post-list > li[data-lang]');
+        var empty = document.getElementById('lang-empty');
+        var onHome = items.length > 0;
+
+        function apply(lang) {
+          if (!allowed[lang]) lang = 'all';
+          if (onHome) {
+            var visible = 0;
+            items.forEach(function (li) {
+              var show = lang === 'all' || li.getAttribute('data-lang') === lang;
+              li.hidden = !show;
+              if (show) visible += 1;
+            });
+            if (empty) empty.hidden = visible > 0;
+          }
+          links.forEach(function (link) {
+            var active = link.getAttribute('data-lang-filter') === lang;
+            link.classList.toggle('is-active', active);
+            if (active) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+          });
+          try {
+            localStorage.setItem('blog-lang', lang);
+          } catch (_) {}
+          if (onHome) {
+            try {
+              var url = new URL(window.location.href);
+              if (lang === 'all') url.searchParams.delete('lang');
+              else url.searchParams.set('lang', lang);
+              history.replaceState(null, '', url);
+            } catch (_) {}
+          }
+        }
+
+        var fromQuery = null;
+        try {
+          fromQuery = new URLSearchParams(window.location.search).get('lang');
+        } catch (_) {}
+        var stored = null;
+        try {
+          stored = localStorage.getItem('blog-lang');
+        } catch (_) {}
+        apply(fromQuery || stored || 'all');
+
+        links.forEach(function (link) {
+          link.addEventListener('click', function (event) {
+            if (!onHome) return;
+            event.preventDefault();
+            apply(link.getAttribute('data-lang-filter'));
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -40,7 +40,7 @@ npm install
 npm run dev
 ```
 
-On the home page, filter with **All · EN · RU** (or `?lang=all|en|ru`). Choice can persist in `localStorage`. Sample posts: `/blog/typography-sample/` (EN) and `/blog/tipografika-obrazets/` (RU). Body type is the Iowan/Palatino system stack for both languages.
+In the header (top-right), filter with **All · EN · RU** (or `?lang=all|en|ru` on the home URL). Choice can persist in `localStorage`. Sample posts: `/blog/typography-sample/` (EN) and `/blog/tipografika-obrazets/` (RU). Body type is the Iowan/Palatino system stack for both languages.
 
 ## Add a post
 
