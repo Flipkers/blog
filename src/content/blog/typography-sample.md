@@ -3,6 +3,7 @@ title: "Typography sample"
 description: "Long placeholder copy for checking measure, line-height, and hierarchy on the article page."
 pubDate: 2026-11-20
 draft: false
+lang: en
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at odio sit amet nisl fermentum fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed at libero non nisl tincidunt aliquet. Cras euismod, magna a tincidunt tristique, nisl nisl dictum justo, vitae tincidunt nisl nisl eget nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.

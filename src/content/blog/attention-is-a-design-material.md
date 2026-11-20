@@ -2,6 +2,7 @@
 title: "Attention is a design material"
 description: "Interfaces do not merely display information. They borrow a scarce resource and either return it intact or spend it carelessly."
 pubDate: 2026-10-03
+lang: en
 ---
 
 We talk about typography, color, and layout as design materials. Attention belongs on that list too. Every screen asks for some of it. Every animation spends a little. Every notification tries to renew the lease. Products that ignore this end up looking busy even when they are technically correct.

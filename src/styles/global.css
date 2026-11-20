@@ -120,9 +120,43 @@ img {
 }
 
 .page-lede {
-  margin: 0 0 2.5rem;
+  margin: 0 0 1.25rem;
   color: var(--color-muted);
   font-size: 1.05rem;
+}
+
+.lang-filter {
+  margin: 0 0 2.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.lang-filter a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.lang-filter a:hover {
+  color: var(--color-text);
+}
+
+.lang-filter a.is-active {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.lang-filter-sep {
+  margin-inline: 0.45rem;
+  color: var(--color-border);
+}
+
+.lang-empty {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-muted);
 }
 
 .post-list {

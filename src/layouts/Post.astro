@@ -5,10 +5,11 @@ interface Props {
   title: string;
   description: string;
   pubDate: Date;
+  lang?: 'en' | 'ru';
 }
 
-const { title, description, pubDate } = Astro.props;
-const formattedDate = pubDate.toLocaleDateString('en-US', {
+const { title, description, pubDate, lang = 'en' } = Astro.props;
+const formattedDate = pubDate.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -16,7 +17,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 });
 ---
 
-<Base title={title} description={description} ogType="article">
+<Base title={title} description={description} ogType="article" htmlLang={lang}>
   <article>
     <h1 class="page-title">{title}</h1>
     <p class="page-date">

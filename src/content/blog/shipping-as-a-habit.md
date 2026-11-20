@@ -2,6 +2,7 @@
 title: "Shipping as a habit"
 description: "The teams that keep moving rarely wait for perfect readiness. They practice finishing until finishing becomes ordinary."
 pubDate: 2026-11-01
+lang: en
 ---
 
 Shipping is often described as a milestone. I think it is better understood as a habit. Milestones are rare and ceremonial. Habits are repeated until they stop feeling dramatic. The healthiest teams I have seen treat a release the way a runner treats a weekday jog: not always inspired, not always pretty, but regular enough that the system stays warm.

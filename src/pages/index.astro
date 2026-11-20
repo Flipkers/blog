@@ -6,8 +6,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-function formatDate(date: Date) {
-  return date.toLocaleDateString('en-US', {
+function formatDate(date: Date, lang: 'en' | 'ru') {
+  return date.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -19,16 +19,75 @@ function formatDate(date: Date) {
 <Base title="Leonid Mikhalev" description="Essays and notes on building, technology, and attention.">
   <h1 class="page-title">Writing</h1>
   <p class="page-lede">Short essays on software, craft, and how ideas travel.</p>
-  <ul class="post-list">
+  <p class="lang-filter" role="navigation" aria-label="Language filter">
+    <a href="?lang=all" data-lang-filter="all">All</a>
+    <span class="lang-filter-sep" aria-hidden="true">·</span>
+    <a href="?lang=en" data-lang-filter="en">EN</a>
+    <span class="lang-filter-sep" aria-hidden="true">·</span>
+    <a href="?lang=ru" data-lang-filter="ru">RU</a>
+  </p>
+  <ul class="post-list" id="post-list">
     {
       posts.map((post) => (
-        <li>
+        <li data-lang={post.data.lang}>
           <a href={`${import.meta.env.BASE_URL}${post.id}/`}>{post.data.title}</a>
           <time class="post-date" datetime={post.data.pubDate.toISOString()}>
-            {formatDate(post.data.pubDate)}
+            {formatDate(post.data.pubDate, post.data.lang)}
           </time>
         </li>
       ))
     }
   </ul>
+  <p class="lang-empty" id="lang-empty" hidden>No posts in this language.</p>
+  <script is:inline>
+    (function () {
+      var allowed = { all: 1, en: 1, ru: 1 };
+      var links = document.querySelectorAll('[data-lang-filter]');
+      var items = document.querySelectorAll('#post-list > li[data-lang]');
+      var empty = document.getElementById('lang-empty');
+
+      function apply(lang) {
+        if (!allowed[lang]) lang = 'all';
+        var visible = 0;
+        items.forEach(function (li) {
+          var show = lang === 'all' || li.getAttribute('data-lang') === lang;
+          li.hidden = !show;
+          if (show) visible += 1;
+        });
+        if (empty) empty.hidden = visible > 0;
+        links.forEach(function (link) {
+          var active = link.getAttribute('data-lang-filter') === lang;
+          link.classList.toggle('is-active', active);
+          if (active) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+        try {
+          localStorage.setItem('blog-lang', lang);
+        } catch (_) {}
+        try {
+          var url = new URL(window.location.href);
+          if (lang === 'all') url.searchParams.delete('lang');
+          else url.searchParams.set('lang', lang);
+          history.replaceState(null, '', url);
+        } catch (_) {}
+      }
+
+      var fromQuery = null;
+      try {
+        fromQuery = new URLSearchParams(window.location.search).get('lang');
+      } catch (_) {}
+      var stored = null;
+      try {
+        stored = localStorage.getItem('blog-lang');
+      } catch (_) {}
+      apply(fromQuery || stored || 'all');
+
+      links.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          apply(link.getAttribute('data-lang-filter'));
+        });
+      });
+    })();
+  </script>
 </Base>

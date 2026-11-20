@@ -2,6 +2,7 @@
 title: "On keeping a small software surface"
 description: "Most products accumulate surface area until nobody can see the whole thing. Small surfaces are a discipline, not an accident."
 pubDate: 2026-09-12
+lang: en
 ---
 
 Most software starts small by necessity. There is one screen, one workflow, one promise. Then the product succeeds enough to invite requests, and the requests invite features, and the features invite settings, and the settings invite documentation that nobody reads. What began as a tool becomes a landscape.

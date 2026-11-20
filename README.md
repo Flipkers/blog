@@ -11,10 +11,36 @@ npm install
 npm run dev
 ```
 
+Open http://localhost:4321/blog/
+
 ```bash
 npm run build
 npm run preview
 ```
+
+### Typography / bilingual preview branch
+
+While design is in progress, use the preview branch (not `main`):
+
+```bash
+git clone https://github.com/Flipkers/blog.git
+cd blog
+git checkout preview/typography
+npm install
+npm run dev
+```
+
+Or with an existing clone:
+
+```bash
+git fetch origin
+git checkout preview/typography
+git pull origin preview/typography
+npm install
+npm run dev
+```
+
+On the home page, filter with **All · EN · RU** (or `?lang=all|en|ru`). Choice can persist in `localStorage`. Sample posts: `/blog/typography-sample/` (EN) and `/blog/tipografika-obrazets/` (RU). Body type is the Iowan/Palatino system stack for both languages.
 
 ## Add a post
 
@@ -27,12 +53,15 @@ npm run preview
    description: "One or two sentences for SEO and previews."
    pubDate: 2026-11-20
    draft: false
+   lang: en
    ---
 
    Your essay here.
    ```
 
-3. Commit and push to `main`. GitHub Actions will rebuild and deploy the site.
+   `lang` is `en` or `ru` (defaults to `en`). Posts are independent — not translation pairs. The home list filters by language; URLs stay `/blog/<slug>/`.
+
+3. Commit and push to `main` when ready to ship. GitHub Actions will rebuild and deploy the site.
 
 Set `draft: true` to keep a post out of production builds.
 
