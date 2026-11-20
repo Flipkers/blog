@@ -16,13 +16,9 @@ So I thought, why not have such an app, which organizes notes for me? At first, 
 
 This is how we started. My partner and I started brainstorming and we ended up vibecoding a concept of the perfect app.
 
-(picture)
-
 At first, we tried an auto-tagging scheme, where AI drops tags on notes, and the app sorts notes based on the tags connected to folders (exactly like Apple Notes Smart Folders work). But we ended up with too many tags, and design started to fall under them. It’s just not convenient to navigate through hundreds of tags. So we dropped the idea.
 
 After a couple of iterations, we changed the approach totally. We won’t reinvent the wheel with the UI until we get proper results from AI with note-sorting. That’s how we setup the entire note-taking application right in the cursor.
-
-(picture)
 
 This is how it worked.
 
