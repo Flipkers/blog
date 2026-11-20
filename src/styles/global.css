@@ -54,7 +54,7 @@ img {
 .site {
   width: min(100% - 2.5rem, var(--measure));
   margin-inline: auto;
-  padding-block: 3rem 5rem;
+  padding-block: 1.25rem 3.5rem;
 }
 
 .site-header {
@@ -62,8 +62,8 @@ img {
   align-items: baseline;
   justify-content: space-between;
   gap: 1.5rem;
-  margin-bottom: 3.5rem;
-  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -96,8 +96,8 @@ img {
 }
 
 .site-footer {
-  margin-top: 4rem;
-  padding-top: 1.25rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--color-border);
   font-family: var(--font-sans);
   font-size: 0.8rem;
@@ -270,11 +270,11 @@ img {
 
   .site {
     width: min(100% - 1.75rem, var(--measure));
-    padding-block: 2rem 4rem;
+    padding-block: 1rem 3rem;
   }
 
   .site-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.35rem;
   }
 
   .page-title {
