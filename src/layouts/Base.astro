@@ -43,7 +43,7 @@ const fullTitle = title === siteTitle ? title : `${title} · ${siteTitle}`;
       href={`${import.meta.env.BASE_URL}rss.xml`}
     />
   </head>
-  <body class="font-current">
+  <body>
     <div class="site">
       <header class="site-header">
         <p class="site-title">
@@ -61,53 +61,5 @@ const fullTitle = title === siteTitle ? title : `${title} · ${siteTitle}`;
         <p>&copy; {new Date().getFullYear()} {siteTitle}</p>
       </footer>
     </div>
-    <div class="font-toggle" role="group" aria-label="Font preview">
-      <span>Fonts</span>
-      <button type="button" data-font="georgia">Georgia / Times</button>
-      <button type="button" data-font="current">Current stack</button>
-      <button type="button" data-font="iowan">Iowan / Palatino</button>
-    </div>
-    <script is:inline>
-      (function () {
-        var allowed = { georgia: 1, current: 1, iowan: 1 };
-        var body = document.body;
-        var buttons = document.querySelectorAll('.font-toggle [data-font]');
-
-        function apply(name) {
-          if (!allowed[name]) name = 'current';
-          body.classList.remove('font-georgia', 'font-current', 'font-iowan');
-          body.classList.add('font-' + name);
-          try {
-            localStorage.setItem('blog-font', name);
-          } catch (_) {}
-          buttons.forEach(function (btn) {
-            btn.setAttribute('aria-pressed', btn.getAttribute('data-font') === name ? 'true' : 'false');
-          });
-          try {
-            var url = new URL(window.location.href);
-            if (url.searchParams.get('font') !== name) {
-              url.searchParams.set('font', name);
-              history.replaceState(null, '', url);
-            }
-          } catch (_) {}
-        }
-
-        var fromQuery = null;
-        try {
-          fromQuery = new URLSearchParams(window.location.search).get('font');
-        } catch (_) {}
-        var stored = null;
-        try {
-          stored = localStorage.getItem('blog-font');
-        } catch (_) {}
-        apply(fromQuery || stored || 'current');
-
-        buttons.forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            apply(btn.getAttribute('data-font'));
-          });
-        });
-      })();
-    </script>
   </body>
 </html>

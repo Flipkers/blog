@@ -5,66 +5,12 @@
   --color-link: #1a1a1a;
   --color-link-hover: #000000;
   --color-border: #e5e5e5;
-  /* Default = current shipped stack until a variant is chosen */
-  --font-body: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
+  --font-body: 'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, 'Bitstream Charter',
+    'Sitka Text', Cambria, Georgia, serif;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   --measure: 42rem; /* ~680–720px / ~65–75 characters */
   --space: 1.25rem;
   --line: 1.7;
-}
-
-/* Font preview variants — toggle via ?font= or the on-page control */
-body.font-georgia {
-  --font-body: Georgia, 'Times New Roman', Times, serif;
-}
-
-body.font-current {
-  --font-body: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
-}
-
-body.font-iowan {
-  --font-body: 'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, 'Bitstream Charter',
-    'Sitka Text', Cambria, Georgia, serif;
-}
-
-.font-toggle {
-  position: fixed;
-  z-index: 50;
-  inset-inline: 0;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 0.75rem calc(0.65rem + env(safe-area-inset-bottom));
-  background: rgba(250, 250, 250, 0.94);
-  border-top: 1px solid var(--color-border);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  color: var(--color-muted);
-}
-
-.font-toggle span {
-  align-self: center;
-  margin-right: 0.25rem;
-}
-
-.font-toggle button {
-  appearance: none;
-  margin: 0;
-  padding: 0.35rem 0.65rem;
-  border: 1px solid var(--color-border);
-  border-radius: 2px;
-  background: #fff;
-  color: var(--color-text);
-  font: inherit;
-  cursor: pointer;
-}
-
-.font-toggle button[aria-pressed='true'] {
-  border-color: var(--color-text);
-  background: var(--color-text);
-  color: #fff;
 }
 
 *,
@@ -81,7 +27,6 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  padding-bottom: 3.5rem;
   background:
     radial-gradient(ellipse 120% 80% at 50% -20%, #f3f1ec 0%, transparent 55%),
     var(--color-bg);
