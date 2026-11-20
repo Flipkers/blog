@@ -1,7 +1,7 @@
 ---
 title: "I tried to build an AI-led note-taking app and failed."
 description: "I have ADHD and my brain processes much more information than people usually do."
-pubDate: 2026-11-10
+pubDate: 2025-07-09
 lang: en
 draft: false
 ---

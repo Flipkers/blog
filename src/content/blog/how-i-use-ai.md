@@ -1,7 +1,7 @@
 ---
 title: "How I use AI"
 description: "I try to use AI everywhere I can."
-pubDate: 2026-11-14
+pubDate: 2025-04-21
 lang: en
 draft: false
 ---

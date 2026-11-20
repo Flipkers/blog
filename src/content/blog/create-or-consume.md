@@ -1,7 +1,7 @@
 ---
 title: "Create or consume"
 description: "Time always was, is, will be limited — so you need to distribute it smart."
-pubDate: 2026-11-18
+pubDate: 2025-05-21
 lang: en
 draft: false
 ---
